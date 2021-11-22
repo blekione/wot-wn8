@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { TestDashboardComponent } from './test-dashboard/test-dashboard.component';
+import { PlayerDashboardComponent } from './player-dashboard/player-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -28,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     NavigationComponent,
-    TestDashboardComponent
+    PlayerDashboardComponent
   ],
   imports: [
     AppRoutingModule,

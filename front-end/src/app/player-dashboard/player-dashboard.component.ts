@@ -4,11 +4,11 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { PlayerService } from '../shared/player.service';
 
 @Component({
-  selector: 'app-test-dashboard',
-  templateUrl: './test-dashboard.component.html',
-  styleUrls: ['./test-dashboard.component.scss']
+  selector: 'app-player-dashboard',
+  templateUrl: './player-dashboard.component.html',
+  styleUrls: ['./player-dashboard.component.scss']
 })
-export class TestDashboardComponent implements OnInit {
+export class PlayerDashboardComponent implements OnInit {
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {

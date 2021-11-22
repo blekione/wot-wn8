@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
-import { Playerservice } from '../shared/player.service';
+import { PlayerService } from '../shared/player.service';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   autocomplete: String[] = [];
   isLoading: boolean = false;
 
-  constructor(private fb: FormBuilder, private playerService: Playerservice) { }
+  constructor(private fb: FormBuilder, private playerService: PlayerService) { }
 
   ngOnInit(): void {
     this.playerSearch.valueChanges
@@ -47,9 +47,11 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmit() {
-    console
-    console.log("Submitted: ");
-    console.log(this.playerSearch.controls.formPlayerNickname.errors)
+    let selectedPlayer = this.playerSearch.controls.formPlayerNickname.value;
+    if (selectedPlayer) {
+      this.playerService.selectPlayer(selectedPlayer);
+    }
+    console.log("Submitted: " + selectedPlayer);
   }
   
 }

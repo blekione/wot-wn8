@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { PlayerService } from '../shared/player.service';
 
 @Component({
   selector: 'app-test-dashboard',
   templateUrl: './test-dashboard.component.html',
   styleUrls: ['./test-dashboard.component.scss']
 })
-export class TestDashboardComponent {
+export class TestDashboardComponent implements OnInit {
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -29,5 +30,13 @@ export class TestDashboardComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  playerName: String = '';
+
+  constructor(private breakpointObserver: BreakpointObserver, private playerService: PlayerService) {}
+
+  ngOnInit(): void {
+    this.playerService.selectedPlayer.subscribe(selectedPlayer => {
+      this.playerName = selectedPlayer;
+    })
+  }
 }

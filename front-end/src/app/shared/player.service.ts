@@ -1,11 +1,15 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
+import { AbstractControl } from "@angular/forms";
 
 @Injectable({
     providedIn: 'root'
 })
-export class Playerservice {
+export class PlayerService {
+    
     playerNamesAutocomplete: string[] = ['Dr Flen', 'Dr Dree', 'Dr Alban', 'Dr Bleki', 'FLEN', 'Bleki', 'Blaki', 'Blacki'];
+
+    selectedPlayer: EventEmitter<String> = new EventEmitter<String>();
 
     constructor(
         private httpCLient: HttpClient
@@ -20,4 +24,8 @@ export class Playerservice {
             return el.toLowerCase().indexOf(query.toLowerCase()) !== -1
         })
     }
+
+    selectPlayer(playerName: String) {
+        this.selectedPlayer.emit(playerName);
+      }
 }
